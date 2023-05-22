@@ -15,14 +15,14 @@ struct ListFlashcardView: View {
     var body: some View {
         NavigationView {
             
-            List(savedFlashCards, id: \.id) { cardSet in
+            List(savedFlashCards, id: \.flashcardSetName) { cardSet in
                 NavigationLink(destination: FlashcardView(set: cardSet)) {
-                    Text(cardSet.id.uuidString)
+                    Text(cardSet.flashcardSetName)
                         .font(.headline)
                 }
             }
             .listStyle(InsetGroupedListStyle())
-            .navigationTitle("My Flashcard")
+            .navigationTitle("My Flashcards")
         }.onAppear {
             savedFlashCards = LocalStorage.allFlashcardSets
         }

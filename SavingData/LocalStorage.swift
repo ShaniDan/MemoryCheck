@@ -22,6 +22,7 @@
 
 import Foundation
 
+
 class LocalStorage {
     
 // private static var myKey: String = "myKey" declares a private static property myKey that holds a string key used to identify the data stored in UserDefaults.
@@ -47,7 +48,7 @@ class LocalStorage {
 }
     
     // CRUD
-    // Create
+    // MARK: Create function
     
     static func addSet(name: String) -> UUID {
         let cardSet = FlashcardSet(flashcardSetName: name)
@@ -57,6 +58,7 @@ class LocalStorage {
     // static func add(card: Card) is a static method of the LocalStorage class that adds a new Card object to the stored array of cards.
 
     static func add(card: Card, to id: UUID?) {
+        
         guard let id = id, let index = allFlashcardSets.firstIndex(where: { $0.id == id }) else { return }
         var cardSet = cardSets.remove(at: index)
         cardSet.flashCards.append(card)
@@ -64,9 +66,17 @@ class LocalStorage {
         cardSets.append(cardSet)
     }
     
+    // MARK: Update - need to make an update feature
+    // MARK: update function to edit the text
+    
+    static func updateCardSet(id: UUID, newName: String) {
+        guard let index = cardSets.firstIndex(where: { $0.id == id }) else {
+            return
+        }
+        cardSets[index].flashcardSetName = newName
+    }
     public static var allFlashcardSets: [FlashcardSet] {cardSets}
     
-    // MARK: Update - need to make an update feature
     
     // MARK: Delete
 }
@@ -83,7 +93,8 @@ struct Card : Codable, Identifiable, Hashable {
 // A struct to store one FlashCard set's data
 struct FlashcardSet : Codable, Identifiable, Hashable {
     var id = UUID()
-    
-    let flashcardSetName : String
+    var flashcardSetName : String
     var flashCards : [Card] = []
 }
+
+
