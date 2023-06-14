@@ -12,6 +12,7 @@ struct FlashcardView: View {
     @State var flipped = false
     @State var currentIndex: Int = 0
     @State var set: FlashcardSet
+    @State private var isShowingUpdateView = false
     
     init(set: FlashcardSet) {
         _set = State(initialValue: set)
@@ -28,6 +29,7 @@ struct FlashcardView: View {
     
     var body: some View {
         VStack {
+            Text(set.flashcardSetName)
             ZStack {
                 Rectangle()
                     .fill(flipped ? Color.blue : Color(.systemIndigo))
@@ -38,7 +40,7 @@ struct FlashcardView: View {
                         withAnimation { self.flipped.toggle()
                         }
                     }
-// MARK: Showing the text that is saved in the TextEditors
+                // MARK: Showing the text that is saved in the TextEditors
                 
                 VStack {
                     if let card = currentCard {
@@ -52,7 +54,18 @@ struct FlashcardView: View {
                 )
                 .frame(width: 200, height: 100)
             }
-            Button("Next Card", action: nextCard)
+            //            NavigationView {
+            HStack {
+                Button("Next Card", action: nextCard)
+                    .padding()
+                Spacer()
+                
+                NavigationLink(destination: EditCardsetView()) {
+                    Text("Edit")
+                }
+                .padding()
+            }
+//            }
         }
     }
     

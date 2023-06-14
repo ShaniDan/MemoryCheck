@@ -8,43 +8,39 @@
 import SwiftUI
 
 struct TextEditorView: View {
-    // @State property wrappers to store two text editor values
     @State public var text1: String = ""
     @State public var text2: String = ""
     @State public var textField: String = ""
     @State var currentSet: UUID?
     @State var savedFlashCardNames = LocalStorage.allFlashcardSets
-    @State var selection = 0
-    
+    @State var selection = FlashcardSet(flashcardSetName: "")
     
     var body: some View {
         NavigationView {
             VStack {
-                // MARK: TextField for the name of the Flashcard set
                 Section {
-                    TextField("Add Flashcard", text: $textField)
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(20)
-                        .overlay (
-                            
-                            Picker("", selection: $selection) {
-                            ForEach(savedFlashCardNames) { set in
-                                Text(set.flashcardSetName).tag(set)
-                            }
+                TextField("Add New Set", text: $textField)
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(20)
+//                    .overlay
+                        Picker("", selection: $selection) {
+                        ForEach(savedFlashCardNames) { set in
+                            Text(set.flashcardSetName).tag(set)
                         }
-                                .padding(.trailing, 8)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
-                            
-                            )
-                    Button {
-                        // MARK: Need to save only the name of the card as a title
-                        currentSet = LocalStorage.addSet(name: textField)
-                    } label: {
-                        Text("Save")
                     }
+                    .padding(.trailing, 8)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
+                    .onChange(of: selection) { newValue in
+                        currentSet = newValue.id
+                    }
+                Button {
+                    // MARK: Need to save only the name of the card as a title
+                    currentSet = LocalStorage.addSet(name: textField)
+                } label: {
+                    Text("Save")
                 }
-                
+            }
                 // First view of the TextEditor
                 Text("Question")
                     .foregroundColor(.gray);
@@ -72,11 +68,6 @@ struct TextEditorView: View {
                         text2 = ""
                     } label: {
                         Text("Add Card")
-                    }
-                    Button {
-                        
-                    } label: {
-                        Text("Add a new flashcard set")
                     }
                 }
             }
