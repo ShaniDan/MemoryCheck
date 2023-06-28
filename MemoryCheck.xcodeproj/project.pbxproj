@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		25261D382A1D60F600AF78B3 /* EditCardsetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25261D372A1D60F600AF78B3 /* EditCardsetView.swift */; };
 		2562FE9329F0739C00CBB4B5 /* MemoryCheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2562FE9229F0739C00CBB4B5 /* MemoryCheckApp.swift */; };
-		2562FE9529F0739D00CBB4B5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2562FE9429F0739D00CBB4B5 /* ContentView.swift */; };
 		2562FE9729F0739E00CBB4B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2562FE9629F0739E00CBB4B5 /* Assets.xcassets */; };
 		2562FE9A29F0739E00CBB4B5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2562FE9929F0739E00CBB4B5 /* Preview Assets.xcassets */; };
 		2562FE9C29F0739E00CBB4B5 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2562FE9B29F0739E00CBB4B5 /* Persistence.swift */; };
@@ -20,13 +19,13 @@
 		2562FEAD29F07A5B00CBB4B5 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2562FEAC29F07A5B00CBB4B5 /* LocalStorage.swift */; };
 		257D7DD729FDE488002E8543 /* ListFlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D7DD629FDE488002E8543 /* ListFlashcardView.swift */; };
 		257D7DD929FDE57F002E8543 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D7DD829FDE57F002E8543 /* FirstView.swift */; };
+		25DD29242A4CE08F007F5BD0 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DD29232A4CE08F007F5BD0 /* CardModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		25261D372A1D60F600AF78B3 /* EditCardsetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardsetView.swift; sourceTree = "<group>"; };
 		2562FE8F29F0739C00CBB4B5 /* MemoryCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2562FE9229F0739C00CBB4B5 /* MemoryCheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCheckApp.swift; sourceTree = "<group>"; };
-		2562FE9429F0739D00CBB4B5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2562FE9629F0739E00CBB4B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2562FE9929F0739E00CBB4B5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2562FE9B29F0739E00CBB4B5 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -37,6 +36,7 @@
 		2562FEAC29F07A5B00CBB4B5 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		257D7DD629FDE488002E8543 /* ListFlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFlashcardView.swift; sourceTree = "<group>"; };
 		257D7DD829FDE57F002E8543 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		25DD29232A4CE08F007F5BD0 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +53,11 @@
 		2562FE8629F0739C00CBB4B5 = {
 			isa = PBXGroup;
 			children = (
-				2562FEB029F07B0900CBB4B5 /* Views */,
-				2562FEA529F074CF00CBB4B5 /* SavingData */,
 				2562FE9129F0739C00CBB4B5 /* MemoryCheck */,
+				2562FEA529F074CF00CBB4B5 /* Model */,
+				257D7DDA29FE0A97002E8543 /* View */,
+				257D7DDC29FE0AE2002E8543 /* ViewModel */,
+				2562FE9829F0739E00CBB4B5 /* Preview Content */,
 				2562FE9029F0739C00CBB4B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,7 +75,6 @@
 			children = (
 				2562FE9229F0739C00CBB4B5 /* MemoryCheckApp.swift */,
 				2562FE9B29F0739E00CBB4B5 /* Persistence.swift */,
-				2562FE9829F0739E00CBB4B5 /* Preview Content */,
 			);
 			path = MemoryCheck;
 			sourceTree = "<group>";
@@ -84,54 +85,37 @@
 				2562FE9D29F0739E00CBB4B5 /* MemoryCheck.xcdatamodeld */,
 				2562FE9929F0739E00CBB4B5 /* Preview Assets.xcassets */,
 				2562FE9629F0739E00CBB4B5 /* Assets.xcassets */,
-				2562FE9429F0739D00CBB4B5 /* ContentView.swift */,
+				2562FEA629F075F100CBB4B5 /* HomeView.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		2562FEA529F074CF00CBB4B5 /* SavingData */ = {
+		2562FEA529F074CF00CBB4B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				25DD29232A4CE08F007F5BD0 /* CardModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		257D7DDA29FE0A97002E8543 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				257D7DD829FDE57F002E8543 /* FirstView.swift */,
+				2562FEAA29F07A0900CBB4B5 /* TextEditorView.swift */,
+				257D7DD629FDE488002E8543 /* ListFlashcardView.swift */,
+				25261D372A1D60F600AF78B3 /* EditCardsetView.swift */,
+				2562FEA829F079D800CBB4B5 /* FlashcardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		257D7DDC29FE0AE2002E8543 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				2562FEAC29F07A5B00CBB4B5 /* LocalStorage.swift */,
 			);
-			path = SavingData;
-			sourceTree = "<group>";
-		};
-		2562FEB029F07B0900CBB4B5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				257D7DDC29FE0AE2002E8543 /* HomeView */,
-				257D7DDA29FE0A97002E8543 /* TextView */,
-				257D7DDB29FE0AC5002E8543 /* FlashcardView */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		257D7DDA29FE0A97002E8543 /* TextView */ = {
-			isa = PBXGroup;
-			children = (
-				2562FEAA29F07A0900CBB4B5 /* TextEditorView.swift */,
-				257D7DD629FDE488002E8543 /* ListFlashcardView.swift */,
-				25261D372A1D60F600AF78B3 /* EditCardsetView.swift */,
-			);
-			path = TextView;
-			sourceTree = "<group>";
-		};
-		257D7DDB29FE0AC5002E8543 /* FlashcardView */ = {
-			isa = PBXGroup;
-			children = (
-				2562FEA829F079D800CBB4B5 /* FlashcardView.swift */,
-			);
-			path = FlashcardView;
-			sourceTree = "<group>";
-		};
-		257D7DDC29FE0AE2002E8543 /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-				2562FEA629F075F100CBB4B5 /* HomeView.swift */,
-				257D7DD829FDE57F002E8543 /* FirstView.swift */,
-			);
-			path = HomeView;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,8 +191,8 @@
 				2562FE9C29F0739E00CBB4B5 /* Persistence.swift in Sources */,
 				2562FEA929F079D800CBB4B5 /* FlashcardView.swift in Sources */,
 				25261D382A1D60F600AF78B3 /* EditCardsetView.swift in Sources */,
-				2562FE9529F0739D00CBB4B5 /* ContentView.swift in Sources */,
 				2562FE9329F0739C00CBB4B5 /* MemoryCheckApp.swift in Sources */,
+				25DD29242A4CE08F007F5BD0 /* CardModel.swift in Sources */,
 				257D7DD729FDE488002E8543 /* ListFlashcardView.swift in Sources */,
 				2562FEA729F075F100CBB4B5 /* HomeView.swift in Sources */,
 				2562FEAD29F07A5B00CBB4B5 /* LocalStorage.swift in Sources */,

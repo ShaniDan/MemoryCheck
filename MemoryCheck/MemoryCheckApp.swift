@@ -13,7 +13,7 @@ struct MemoryCheckApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            ListFlashcardView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
